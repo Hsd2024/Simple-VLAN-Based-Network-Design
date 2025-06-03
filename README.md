@@ -9,7 +9,8 @@ Easier Management: Departments are logically separated, making it easier to trou
 Reduced Broadcast Traffic: Each VLAN acts as its own broadcast domain, increasing network efficiency.
 
 # Network Diagram
-(place the network diagram here)
+<img width="958" alt="Screenshot 2025-06-02 223701" src="https://github.com/user-attachments/assets/431cff1a-2bfe-4a6c-a775-1ebb0c26091a" />
+
 
 # Example structure:
 
@@ -21,10 +22,12 @@ Reduced Broadcast Traffic: Each VLAN acts as its own broadcast domain, increasin
 
 Key Configurations
 
-## Switch Configuration (VLANs & Trunk Port)
+## Switch Configuration
 First I renamed the switch to Bulding A switch as abbrevation of  ( B_A_Switch )
 
 # Step one  rename your Switch:
+<img width="520" alt="Screenshot 2025-06-02 231015 Rename switch" src="https://github.com/user-attachments/assets/90053e19-9ab1-47b1-8c15-43aaedd0e607" />
+
 Go to the switch CLI and type bellow code.
 
 Switch>
@@ -42,22 +45,34 @@ Switch(config)#hostname B_A_Switch
 B_A_Switch(config)#
 
 # Step 2 secure the Switch
+<img width="521" alt="Screenshot 2025-06-02 225026-Enable mode password" src="https://github.com/user-attachments/assets/b8becdc9-f7fa-4cda-b86a-0c058323515a" />
+
 Set Console and Enable Passwords:
 
 Purpose: Secure the switch by setting passwords for the console and enable modes.
-Set the Console Password:
 
-B_A_Switch(config)# line console 0
+Set the  Password:
 
-B_A_Switch(config-line)# password cisco
+B_A_Switch>enable
 
-B_A_Switch(config-line)# login
+B_A_Switch#
 
-B_A_Switch(config-line)# exit
+B_A_Switch#configure terminal 
 
-B_A_Switch(config)#
+Switch(config)#
+
+Switch(config)#Enable secret xxxx
+
+Switch(config)#exit
+
+Switch#write
+
+Building configuration...
+
+Done [OK]
 
 # Creat VLAN
+![Vlan Configutation](https://github.com/user-attachments/assets/16c6d1ba-1e12-482e-ba33-26e65d29cca7)
 
 B_A_Switch(config)#
 
@@ -73,44 +88,20 @@ B_A_Switch(config)# vlan 30
 
 B_A_Switch(config-vlan)# name IT
 
-
 # Assign ports to VLANs
-B_A_Switch(config)# interface fa0/1
+![Vlan Configutation2](https://github.com/user-attachments/assets/f895f532-c3c0-466f-9681-d8f9dd9b12d8)
+
+B_A_Switch(config)# interface fa0/1 - 3
 
 B_A_Switch(config-if)# switchport access vlan 10
 
-B_A_Switch(config)# interface fa0/2
+B_A_Switch(config)# interface fa0/4 - 6
 
 B_A_Switch(config-if)# switchport access vlan 20
 
-B_A_Switch(config)# interface fa0/3
+B_A_Switch(config)# interface fa0/7 - 9
 
-B_A_Switch(config-if)# switchport access vlan 20
+B_A_Switch(config-if)# switchport access vlan 30
 
-
-# Trunk to router
-Switch(config)# interface fa0/24
-
-Switch(config-if)# switchport mode trunk
-
-# Router Configuration (Router-on-a-Stick)
-
-Router(config)# interface fa0/0.10
-
-Router(config-subif)# encapsulation dot1Q 10
-
-Router(config-subif)# ip address 192.168.10.1 255.255.255.0
-
-Router(config)# interface fa0/0.20
-
-Router(config-subif)# encapsulation dot1Q 20
-
-Router(config-subif)# ip address 192.168.20.1 255.255.255.0
-
-Router(config)# interface fa0/0.30
-
-Router(config-subif)# encapsulation dot1Q 30
-
-Router(config-subif)# ip address 192.168.30.1 255.255.255.0
 
 
