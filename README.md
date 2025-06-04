@@ -47,9 +47,9 @@ B_A_Switch(config)#
 # Step 2 secure the Switch
 <img width="521" alt="Screenshot 2025-06-02 225026-Enable mode password" src="https://github.com/user-attachments/assets/b8becdc9-f7fa-4cda-b86a-0c058323515a" />
 
-Set Console and Enable Passwords:
+Set Enable Passwords:
 
-Purpose: Secure the switch by setting passwords for the console and enable modes.
+Purpose: Secure the switch by setting passwords for the enable modes.
 
 Set the  Password:
 
@@ -71,7 +71,7 @@ Building configuration...
 
 Done [OK]
 
-# Creat VLAN
+# Step 3 Creat VLAN
 ![Vlan Configutation](https://github.com/user-attachments/assets/16c6d1ba-1e12-482e-ba33-26e65d29cca7)
 
 B_A_Switch(config)#
@@ -80,28 +80,50 @@ B_A_Switch(config)# vlan 10
 
 B_A_Switch(config-vlan)# name HR
 
+B_A_Switch(config-vlan)# exit
+
 B_A_Switch(config)# vlan 20
 
 B_A_Switch(config-vlan)# name Finance
+
+B_A_Switch(config-vlan)# exit
 
 B_A_Switch(config)# vlan 30
 
 B_A_Switch(config-vlan)# name IT
 
-# Assign ports to VLANs
+B_A_Switch(config-vlan)# exit
+
+B_A_Switch(config-vlan)# 
+
+# Step 4 Assign ports to VLANs
 ![Vlan Configutation2](https://github.com/user-attachments/assets/f895f532-c3c0-466f-9681-d8f9dd9b12d8)
 
 B_A_Switch(config)# interface fa0/1 - 3
 
+B_A_Switch(config-if)# switchport mode access
+
 B_A_Switch(config-if)# switchport access vlan 10
+
+B_A_Switch(config-if)# exit
 
 B_A_Switch(config)# interface fa0/4 - 6
 
+B_A_Switch(config-if)# switchport mode access
+
 B_A_Switch(config-if)# switchport access vlan 20
+
+B_A_Switch(config-if)# exit
 
 B_A_Switch(config)# interface fa0/7 - 9
 
+B_A_Switch(config-if)# switchport mode access
+
 B_A_Switch(config-if)# switchport access vlan 30
 
+B_A_Switch(config-if)# exit
 
+# Step 5 Save configuration
+
+<img width="524" alt="Screenshot 2025-06-03 213230- write configuration" src="https://github.com/user-attachments/assets/9e35a1c7-0799-4add-bd55-4e2800292044" />
 
