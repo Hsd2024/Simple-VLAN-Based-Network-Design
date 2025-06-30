@@ -14,11 +14,11 @@ Reduced Broadcast Traffic: Each VLAN acts as its own broadcast domain, increasin
 
 # Example structure:
 
-3 VLANs: VLAN 10 (HR),......VLAN 20 (Finance),......VLAN 30 (IT)
+ 3 VLANs: VLAN 10 (HR),......VLAN 20 (Finance),......VLAN 30 (IT)
 
-1 Layer 2 switch, 1 Router-on-a-Stick configuration, 1 DHCP server
+ 1 Layer 2 switch, 1 Router-on-a-Stick configuration, 1 DHCP server
 
-3 PCs per VLAN
+ 3 PCs per VLAN
 
 Key Configurations
 
